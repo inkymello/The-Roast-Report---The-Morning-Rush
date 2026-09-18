@@ -2,6 +2,12 @@
 
 An interactive D3.js visualization exploring coffee shop sales across Astoria, Hell's Kitchen, and Lower Manhattan from January to June 2023.
 
+## Live visualization
+
+[Open The Roast Report](https://inkymello.github.io/The-Roast-Report---The-Morning-Rush/)
+
+The link opens the published interactive visualization directly in a web browser. No installation is required.
+
 ## What it shows
 
 - When transactions happen, using a day-and-hour heat map.
