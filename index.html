@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Roast Report — Coffee Shop Sales, Jan–Jun 2023</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">The Morning Rush · The Roast Report · January to June 2023</div>
+    <h1>The morning rush pays for the day.</h1>
+    <p class="standfirst">Sales across the Astoria, Hell's Kitchen and Lower Manhattan shops, cut three ways:
+      when people buy, where the money lands, and how tightly daily revenue tracks the number of cups sold.
+      Every filter below moves all three views at once.</p>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="field"><label for="f-store">Store</label><select id="f-store"></select></div>
+    <div class="field"><label for="f-cat">Category</label><select id="f-cat"></select></div>
+    <div class="field"><label for="f-month">Month</label><select id="f-month"></select></div>
+    <button class="ghost" id="reset" type="button">Clear</button>
+    <div class="spacer"></div>
+    <nav class="jump">
+      <a href="#when">When</a><a href="#where">Where</a><a href="#how">How much</a>
+    </nav>
+  </div>
+</div>
+
+<div class="kpis" id="kpis">
+  <div class="kpi"><div class="k">Revenue</div><div class="v" id="k-rev">—</div><div class="s" id="k-rev-s">&nbsp;</div></div>
+  <div class="kpi"><div class="k">Transactions</div><div class="v" id="k-tx">—</div><div class="s" id="k-tx-s">&nbsp;</div></div>
+  <div class="kpi"><div class="k">Units sold</div><div class="v" id="k-qty">—</div><div class="s" id="k-qty-s">&nbsp;</div></div>
+  <div class="kpi"><div class="k">Per transaction</div><div class="v" id="k-avg">—</div><div class="s" id="k-avg-s">&nbsp;</div></div>
+  <div class="kpi"><div class="k">Busiest hour</div><div class="v" id="k-peak">—</div><div class="s" id="k-peak-s">&nbsp;</div></div>
+</div>
+
+<!-- ─────────────── WHEN ─────────────── -->
+<section id="when"><div class="wrap">
+  <div class="shead">
+    <h2>When the queue forms</h2>
+    <p>Transactions by day of week and hour. Darker cells are quiet; the pale ones are the rush.
+       Hover to isolate an hour across the week, click to hold it there.</p>
+  </div>
+  <div class="scroller"><svg id="heat" role="img" aria-label="Heat map of transactions by day of week and hour of day"></svg></div>
+  <p class="note" id="heat-note">&nbsp;</p>
+</div></section>
+
+<!-- ─────────────── WHERE ─────────────── -->
+<section id="where"><div class="wrap">
+  <div class="shead">
+    <h2>Where the money lands</h2>
+    <p>Circle area is proportional to revenue. Click a store on the map or in the ranking to
+       filter the whole page down to it, and click again to release.</p>
+  </div>
+  <div class="mapgrid">
+    <div class="mapbox"><svg id="map" role="img" aria-label="Map of the three shop locations in New York City, sized by revenue"></svg></div>
+    <div>
+      <ul class="rank" id="rank"></ul>
+      <div class="stat" style="margin-top:20px"><span>Spread, top to bottom</span><b id="m-spread">—</b></div>
+      <div class="stat"><span>Units per transaction</span><b id="m-upt">—</b></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ─────────────── HOW MUCH ─────────────── -->
+<section id="how"><div class="wrap">
+  <div class="shead">
+    <h2>How much a cup is worth</h2>
+    <p>One point per store per trading day. Point size is the number of transactions that day.
+       Drag a box on the plot to zoom into it.</p>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="scgrid">
+    <div><svg id="scatter" role="img" aria-label="Scatter plot of daily revenue against daily units sold"></svg></div>
+    <div>
+      <div class="eq" id="eq">—</div>
+      <div class="stat"><span>R²</span><b id="s-r2">—</b></div>
+      <div class="stat"><span>Correlation</span><b id="s-r">—</b></div>
+      <div class="stat"><span>Revenue per extra unit</span><b id="s-slope">—</b></div>
+      <div class="stat"><span>Store-days plotted</span><b id="s-n">—</b></div>
+      <button class="ghost" id="zoomout" style="margin-top:16px" hidden>Reset zoom</button>
+      <div style="margin-top:22px">
+        <div class="k" style="font-size:11px;color:var(--milk-faint);letter-spacing:.09em;text-transform:uppercase">Transactions per day</div>
+        <svg id="sizekey" class="sizekey" width="230" height="70"></svg>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Built with <b>D3 v7</b>. Figures come from the cleaned transaction table —
+  <b>149,116 rows</b>, <b>214,470 units</b>, <b>$698,812.33</b> in revenue across the full period.
+  The basemap is simplified geometry drawn from an explicit Mercator projection, not a tile service.
+</div></footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="script.js"></script>
+</body>
+</html>
