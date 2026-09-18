@@ -1,4 +1,3 @@
-
 /* ──────────────────────────────────────────────────────────────
    Palette: a roast chart. Background is dark-roast bean, the
    sequential scale runs green-bean → light roast, and the three
@@ -187,6 +186,12 @@ body{ transition: background .25s ease, color .25s ease; }
 :root[data-theme="light"] .bar{ background:rgba(228,205,176,.94); }
 :root[data-theme="light"] .mapbox{ background:#CBE0E6; }
 :root[data-theme="light"] .tip{ background:#FFFBF3; box-shadow:0 10px 30px rgba(90,69,48,.25); }
+
+/* .pinbg stays a fixed dark chip in both themes, so .pin/.pinsub need their
+   own lighter-cream color in light mode instead of inheriting --milk
+   (which flips to dark brown and becomes unreadable on the dark chip). */
+:root[data-theme="light"] .pin{ fill:#F7EEE0; }
+:root[data-theme="light"] .pinsub{ fill:#D8C7AE; }
 
 /* ── theme toggle button — fixed bottom-right, stays put on scroll ── */
 .theme-toggle{
