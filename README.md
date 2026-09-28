@@ -2,6 +2,8 @@
 
 An interactive D3.js visualization exploring coffee shop sales across Astoria, Hell's Kitchen, and Lower Manhattan from January to June 2023.
 
+**Live visualization:** https://inkymello.github.io/The-Roast-Report---The-Morning-Rush/
+
 ## Live visualization
 
 [Open The Roast Report](https://inkymello.github.io/The-Roast-Report---The-Morning-Rush/)
@@ -31,8 +33,8 @@ Alternatively, serve the folder with any static web server and open the supplied
 ## Project files
 
 - `index.html` - page structure and D3.js entry points.
-- `script.js` - embedded dataset, filtering, aggregation, and chart interactions.
-- `style.css` - responsive layout, typography, colors, and chart styling.
+- `js/script.js` - embedded dataset, filtering, aggregation, and chart interactions.
+- `css/style.css` - responsive layout, typography, colors, and chart styling.
 
 ## Dataset summary
 
